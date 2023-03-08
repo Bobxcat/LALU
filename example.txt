@@ -1,0 +1,5 @@
+sub r2, r3 //This is a comment
+sub r1, r0 this is also a comment
+add r3, r2 #This works too
+ADD r0, r3, and trailing commas are *technically* allowed, 
+AdD r2, r0 // ^^I just wouldn't recommend doing this

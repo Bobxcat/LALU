@@ -1,0 +1,28 @@
+ldi R0, 0
+ldi R1, 1
+// Comments are valid
+/ Even with just 1 slash
+# This type of comment works as well
+  // Comments can be inlined
+  # I meant to say "indented"
+sub R0, R1 // Here, we're setting R0 = -10
+sub R0, R1
+sub R0, R1
+sub R0, R1
+sub R0, R1
+
+sub R0, R1
+sub R0, R1
+sub R0, R1
+sub R0, R1
+sub R0, R1
+
+
+jmp other_label
+    label: my_jump_label Comments work as normal after labels
+    label other_label // This is also supported syntax (for both comments and labels)
+
+add R0, R1
+    label: _unused_label #This label isn't ever used
+jmpn my_jump_label
+jmpn other_label // This jump will fail when `jmpn` fails, so 
