@@ -256,46 +256,6 @@ impl Instruction {
     }
 }
 
-// #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-// pub struct Instruction {
-//     pub opcode: Opcode,
-//     pub rd: Register,
-//     pub rs: Register,
-// }
-
-// impl Instruction {
-//     pub fn to_string_asm(&self) -> String {
-//         format!(
-//             "{} {},{}",
-//             self.opcode.to_string_asm(),
-//             self.rd.to_string_asm(),
-//             self.rs.to_string_asm()
-//         )
-//     }
-//     /// Returns the binary representation of this instruction
-//     pub fn to_byte(&self) -> u8 {
-//         // {rd}{rs}{opcode}
-//         let mut s = 0;
-//         s |= (self.rd as u8) << 6;
-//         s |= (self.rd as u8) << 4;
-//         s |= self.opcode as u8;
-
-//         s
-//     }
-//     pub fn try_from_string_asm(raw: &str) -> Option<Self> {
-//         // Format is "{opcode} {rd},{rs}"
-//         let components = raw.trim().split([' ', ',']);
-
-//         let components: Vec<_> = components.filter(|s| !s.is_empty()).collect();
-
-//         let opcode = Opcode::try_from_string_asm(components.get(0)?)?;
-//         let rd = Register::try_from_string_asm(components.get(1)?)?;
-//         let rs = Register::try_from_string_asm(components.get(2)?)?;
-
-//         Some(Self { opcode, rd, rs })
-//     }
-// }
-
 static OPCODE_NAMES: Lazy<BiMap<Opcode, &str>> = Lazy::new(|| {
     use Opcode::*;
 
@@ -431,24 +391,6 @@ mod tests {
                 Instruction::try_from_string_asm("sub R0,R1", &jump_labels),
                 Some(Instruction::Sub(R0, R1))
             );
-
-            // assert_eq!(
-            //     Instruction::try_from_string_asm("  add    R0,        R1   "),
-            //     Some(Instruction {
-            //         opcode: Add,
-            //         rd: R0,
-            //         rs: R1
-            //     })
-            // );
-
-            // assert_eq!(
-            //     Instruction::try_from_string_asm("sub R0,R1"),
-            //     Some(Instruction {
-            //         opcode: Sub,
-            //         rd: R0,
-            //         rs: R1
-            //     })
-            // );
         }
     }
 }
