@@ -5,6 +5,8 @@
 
 In order to build and run this program, simply open the root directory and run `cargo run --release` from a terminal. By default, this will try to open a file `in.txt` and assemble it, writing binary output to `out.lalu` (which can be viewed using a hex editor). This command will also interpret the assembly.
 
+If reading from a different text file is desired, instead run the command: `cargo run --release {name_of_file}`
+
 ## Interpreting output
 
 At the start and end of the program, and between every instruction that is run, the state of every register is printed in the following format:
